@@ -20,3 +20,5 @@ jobs:
           docker image build -t my-jenkins:latest .
           docker tag my-jenkins:latest ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest
+
+          docker login out
