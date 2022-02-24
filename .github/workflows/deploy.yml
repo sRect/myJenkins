@@ -21,4 +21,4 @@ jobs:
           docker tag my-jenkins:latest ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest
 
-          docker login out
+          docker logout
