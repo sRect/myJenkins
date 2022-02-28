@@ -2,8 +2,8 @@ FROM jenkins/jenkins:latest
 
 USER root
 RUN apt-get update \
-  && apt-get install yum \
   && apt-get install -y sudo \
+  && sudo apt-get install yum \
   && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
