@@ -15,6 +15,5 @@ VOLUME [ "/var/run/docker.sock" ]
 # RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 
 # ENTRYPOINT ["sudo sed -i 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' /var/jenkins_home/updates/default.json && sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' /var/jenkins_home/updates/default.json","sudo apt-get update && sudo apt-get install -y docker.io"]
-ENTRYPOINT ["sudo systemctl enable docker", "sudo systemctl start docker"]
 CMD [ "sudo", "apt-get", "install", "wget" ]
 EXPOSE 8080
