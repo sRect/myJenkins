@@ -10,7 +10,7 @@ RUN apt-get update \
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 USER jenkins
-VOLUME [ "/var/run/docker.sock", "/usr/bin/docker" ]
+VOLUME [ "/var/run/docker.sock" ]
 # COPY plugins.txt /usr/share/jenkins/plugins.txt
 # RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 
