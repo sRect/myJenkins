@@ -5,7 +5,7 @@ RUN apt-get update \
   # 安装sudo
   && apt-get install -y sudo \
   # 安装docker
-  && sudo curl -fsSL https://get.docker.com | bash -s docker \
+  # && sudo curl -fsSL https://get.docker.com | bash -s docker \
   && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
