@@ -30,7 +30,7 @@
 
   顾名思义，在 docker 容器里安装 docker，然后使用 docker。容器里有 docker，和宿主机上的 docker 是隔离的。
 
-#### 2. Dockerfile
+#### 2. Dockerfile 编写
 
 ```Dockerfile
 FROM jenkins/jenkins:latest
@@ -82,7 +82,7 @@ jobs:
           docker logout
 ```
 
-- git 提交代码
+- git 提交代码，自动打包推送镜像到 dockerhub
 
 ```bash
 git add .
@@ -90,6 +90,22 @@ git commit -m "feat: init"
 git push -u origin main
 ```
 
-不出意外，`Actions`里可以看到，自动部署成功，镜像也成功推送到 dockerhub 了
+不出意外，`Actions`里可以看到，自动部署成功
 
 ![workflows](./assets/img/workflows.jpg)
+
+镜像也成功推送到 dockerhub 了
+
+![myjebkins](./assets/img/myjebkins.jpg)
+
+#### 4. 服务器上拉取刚才的 docker 镜像并安装
+
+- 拉取镜像
+
+```
+docker pull srect/my-jenkins
+```
+
+- 容器安装
+
+> 上面镜像拉取完成后，即可部署
