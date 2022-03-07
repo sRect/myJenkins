@@ -49,8 +49,13 @@ EXPOSE 8080
 
 #### 3. github 的 workflow 配置文件
 
-- 需要在 github 的 jenkins 仓库里设置好 secret（秘钥）
-- 在仓库的`Settings -> Secrets -> Actions`，点击`New repository secret`按钮创建你的 dockerhub 账号和密码，用于下面配置文件中使用。具体过程可见[该文章的“使用 github actions 自动部署”这一章节](https://juejin.cn/post/7050819548722757639#heading-22)来创建，很详细。
+- 前提需要在 github 的 jenkins 仓库里设置好 secrets
+
+- 在仓库的`Settings -> Secrets -> Actions`，点击`New repository secret`按钮创建你的 dockerhub 账号和密码，即添加`DOCKERHUB_USERNAME`和`DOCKERHUB_TOKEN`。如下图所示操作：
+
+![add secrets](/assets/img/add-secrets.jpg)
+
+- /.github/workflows/deploy.yml
 
 ```yml
 name: jenkins image build and push
@@ -76,3 +81,15 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest
           docker logout
 ```
+
+- git 提交代码
+
+```bash
+git add .
+git commit -m "feat: init"
+git push -u origin main
+```
+
+不出意外，`Actions`里可以看到，自动部署成功，镜像也成功推送到 dockerhub 了
+
+![workflows](./assets/img/workflows.jpg)
